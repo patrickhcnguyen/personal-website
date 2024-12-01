@@ -7,10 +7,7 @@ const Experience = () => {
   useEffect(() => {
     const observer = new IntersectionObserver(
       ([entry]) => {
-        if (entry.isIntersecting) {
-          setIsVisible(true);
-          observer.disconnect();
-        }
+        setIsVisible(entry.isIntersecting);
       },
       { 
         threshold: 0.1,
@@ -27,13 +24,15 @@ const Experience = () => {
 
   return (
     <div ref={experienceRef} id="experience" className="h-[50vh] mb-[45vh] relative">
-      <div className={`absolute left-[10vw] top-[-5vh] font-inria font-bold transition-opacity duration-1000 ${isVisible ? 'opacity-100' : 'opacity-0'}`}>
-        <div className="text-[64px] leading-tight">
+      {/* Experience Title */}
+      <div className={`absolute left-[10vw] top-[-5vh] transition-all duration-1000 ${isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-[20px]'}`}>
+        <div className="text-[64px] leading-tight font-inria font-bold">
           Experience
         </div>
       </div>
       
-      <div className={`absolute left-[61.48%] top-[-5vh] w-[2px] h-[83.9vh] mb-[5px] bg-black transition-all duration-1000 ${isVisible ? 'scale-y-100 opacity-100' : 'scale-y-0 opacity-0'} origin-top`} />
+      {/* Timeline (vertical line) */}
+      <div className={`absolute left-[61.48%] top-[-5vh] w-[2px] h-[83.9vh] mb-[5px] bg-black transition-all duration-1000 ${isVisible ? 'opacity-100 scale-y-100' : 'opacity-0 scale-y-0'} origin-top`} />
       {/* Circles with dates */}
       <div className="absolute left-[60.42%] top-[5.5vh] flex items-center">
         <span className={`absolute right-[calc(2.11vw+1.328vw)] whitespace-nowrap font-inria text-[1.5vw] transition-opacity duration-1000 ${isVisible ? 'opacity-100' : 'opacity-0'}`}>
