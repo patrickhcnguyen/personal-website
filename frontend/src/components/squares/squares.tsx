@@ -10,23 +10,23 @@ const Squares = () => {
   useEffect(() => {
     const greenTimer = setTimeout(() => {
       setGreenVisible(true);
-    }, 150);
+    }, 300);
 
     const brownTimer = setTimeout(() => {
       setBrownVisible(true);
-    }, 375);
+    }, 600);
 
     const yellowTimer = setTimeout(() => {
       setYellowVisible(true);
-    }, 600);
+    }, 900);
 
     const lightBrownTimer = setTimeout(() => {
       setLightBrownVisible(true);
-    }, 825);
+    }, 1200);
 
     const redTimer = setTimeout(() => {
       setRedVisible(true);
-    }, 1050);
+    }, 1600);
 
     return () => {
       clearTimeout(greenTimer);
@@ -51,10 +51,10 @@ const Squares = () => {
           transition-all 
           duration-700
           ease-in-out
-          origin-left
+          origin-top
           ${brownVisible 
-            ? 'opacity-100 scale-x-100' 
-            : 'opacity-0 scale-x-0'
+            ? 'opacity-100 scale-y-100' 
+            : 'opacity-0 scale-y-0'
           }
         `}
       />
@@ -111,10 +111,10 @@ const Squares = () => {
           transition-all 
           duration-700
           ease-in-out
-          origin-left
+          origin-top
           ${lightBrownVisible 
             ? 'opacity-100 scale-x-100' 
-            : 'opacity-0 scale-x-0'
+            : 'opacity-0 scale-y-0'
           }
         `}
       />
