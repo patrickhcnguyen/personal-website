@@ -5,6 +5,7 @@ interface Project {
   title: string;
   description: string;
   image: string;
+  url: string;
 }
 
 const Projects = () => {
@@ -17,22 +18,26 @@ const Projects = () => {
     {
       title: "Statify",
       description: "I developed a community based way to view\nyour Spotify Stats, alongside a playlist maker,\nsong recommender, and playlist image\ngenerator.",
-      image: "/spotify.svg"
+      image: "/spotify.svg",
+      url: "https://github.com/patrickhcnguyen/Statify"
     },
     {
       title: "Physarum Slime Simulator",
       description: "Inspired by the Physarum Slime Mold, I made a web simulator to \nemulate the behavior of the slime mold.",
-      image: "/physarum.svg"
+      image: "/physarum.svg",
+      url: "https://physarum-pathfinder.vercel.app/"
     },
     {
       title: "AggieMenus",
       description: "I worked on a team of 5 to develop AggieMenus, a PWA and mobile\napp that centralizes UC Davis dining commons menus to simplify\n browsing and switching between dining hall, locations, dates, and\n meal times.",
-      image: "/aggiemenus.svg"
+      image: "/aggiemenus.svg",
+      url: "https://www.aggiemenus.org/menu"
     },
     {
       title: "Library Recommender",
       description: "Using Kaggle’s dataset of over 50,000 Amazon book reviews, I\ndeveloped a book recommender that recommends the user books\nbased on prompts the user inputs in.",
-      image: "/libraryrecommender.svg"
+      image: "/libraryrecommender.svg",
+      url: "https://github.com/patrickhcnguyen/Library-Recommender"
     }
   ];
 
@@ -167,19 +172,25 @@ const Projects = () => {
         </div>
 
         {/* Project Image */}
-        <div className={`
-          absolute
-          right-[1.48vw]
-          top-[1.32vh]
-          w-[13.67vw]
-          h-[21.03vh]
-        `}>
+        <a 
+          href={projects[currentProject].url}
+          target="_blank"
+          rel="noopener noreferrer"
+          className={`
+            absolute
+            right-[1.48vw]
+            top-[1.32vh]
+            w-[13.67vw]
+            h-[21.03vh]
+            cursor-pointer
+          `}
+        >
           <img 
             src={projects[currentProject].image} 
             alt={projects[currentProject].title}
             className="w-full h-full object-contain"
           />
-        </div>
+        </a>
       </div>
 
       {/* Navigation Dots */}
