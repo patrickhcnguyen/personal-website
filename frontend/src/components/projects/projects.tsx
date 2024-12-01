@@ -122,6 +122,28 @@ const Projects = () => {
     }
   }, [currentProject]);
 
+  useEffect(() => {
+    const observer = new IntersectionObserver(
+      ([entry]) => {
+        setIsVisible(entry.isIntersecting);
+      },
+      { 
+        threshold: 0.1,
+        rootMargin: '-100px 0px' 
+      }
+    );
+
+    if (projectsRef.current) {
+      observer.observe(projectsRef.current);
+    }
+
+    return () => {
+      if (projectsRef.current) {
+        observer.disconnect();
+      }
+    };
+  }, []);
+
   return (
     <div ref={projectsRef} id="projects" className="h-[50vh] mb-[45vh] relative">
       {/* Title */}
