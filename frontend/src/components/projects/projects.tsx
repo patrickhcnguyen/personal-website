@@ -34,19 +34,19 @@ const Projects = () => {
   });
 
   const handleWheel = (e: React.WheelEvent) => {
-    e.preventDefault(); // Prevent default scroll
+    e.preventDefault(); 
     
     if (!canSwipe) return;
     
-    if (Math.abs(e.deltaX) > Math.abs(e.deltaY)) {  // Only handle horizontal scrolling
+    if (Math.abs(e.deltaX) > Math.abs(e.deltaY)) {  
       if (e.deltaX > 1 && currentProject < projects.length - 1) {
         setCurrentProject(prev => prev + 1);
         setCanSwipe(false);
-        setTimeout(() => setCanSwipe(true), 800); // Prevent rapid scrolling
+        setTimeout(() => setCanSwipe(true), 800); 
       } else if (e.deltaX < -1 && currentProject > 0) {
         setCurrentProject(prev => prev - 1);
         setCanSwipe(false);
-        setTimeout(() => setCanSwipe(true), 800); // Prevent rapid scrolling
+        setTimeout(() => setCanSwipe(true), 800); 
       }
     }
   };
@@ -70,16 +70,24 @@ const Projects = () => {
       }
     );
 
-    if (projectsRef.current) {
-      observer.observe(projectsRef.current);
+    const box = projectsRef.current;
+    
+    if (box) {
+      observer.observe(box);
+      
+      const disableScroll = (e: WheelEvent) => {
+        e.preventDefault();
+      };
+
+      box.addEventListener('wheel', disableScroll, { passive: false });
+      window.addEventListener('keydown', handleKeyDown);
+
+      return () => {
+        observer.disconnect();
+        box.removeEventListener('wheel', disableScroll);
+        window.removeEventListener('keydown', handleKeyDown);
+      };
     }
-
-    window.addEventListener('keydown', handleKeyDown);
-
-    return () => {
-      observer.disconnect();
-      window.removeEventListener('keydown', handleKeyDown);
-    };
   }, [currentProject]);
 
   return (
@@ -92,7 +100,7 @@ const Projects = () => {
       </div>
         
       {/* Project Box */}
-      <div 
+      <div
         {...handlers}
         onWheel={handleWheel}
         className={`
