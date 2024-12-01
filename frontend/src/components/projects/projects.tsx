@@ -6,6 +6,7 @@ interface Project {
   description: string;
   image: string;
   url: string;
+  tags: string[];
 }
 
 const Projects = () => {
@@ -19,25 +20,29 @@ const Projects = () => {
       title: "Statify",
       description: "I developed a community based way to view\nyour Spotify Stats, alongside a playlist maker,\nsong recommender, and playlist image\ngenerator.",
       image: "/spotify.svg",
-      url: "https://github.com/patrickhcnguyen/Statify"
+      url: "https://github.com/patrickhcnguyen/Statify",
+      tags: ["MongoDB", "Express", "React", "Node", "Tailwind"]
     },
     {
       title: "Physarum Slime Simulator",
       description: "Inspired by the Physarum Slime Mold, I made a web simulator to \nemulate the behavior of the slime mold.",
       image: "/physarum.svg",
-      url: "https://physarum-pathfinder.vercel.app/"
+      url: "https://physarum-pathfinder.vercel.app/",
+      tags: ["React", "D3.js"]
     },
     {
       title: "AggieMenus",
       description: "I worked on a team of 5 to develop AggieMenus, a PWA and mobile\napp that centralizes UC Davis dining commons menus to simplify\n browsing and switching between dining hall, locations, dates, and\n meal times.",
       image: "/aggiemenus.svg",
-      url: "https://www.aggiemenus.org/menu"
+      url: "https://www.aggiemenus.org/menu",
+      tags: ["React", "Next.js", "Tailwind", "Supabase"]
     },
     {
       title: "Library Recommender",
       description: "Using Kaggle’s dataset of over 50,000 Amazon book reviews, I\ndeveloped a book recommender that recommends the user books\nbased on prompts the user inputs in.",
       image: "/libraryrecommender.svg",
-      url: "https://github.com/patrickhcnguyen/Library-Recommender"
+      url: "https://github.com/patrickhcnguyen/Library-Recommender",
+      tags: ["Python", "Pandas", "NLTK", "PostgreSQL"]
     }
   ];
 
@@ -169,6 +174,34 @@ const Projects = () => {
           whitespace-pre-line
         `}>
           {projects[currentProject].description}
+        </div>
+
+        {/* Project Tags */}
+        <div className={`
+          absolute
+          left-[3.05vw]
+          bottom-[2.52vh]
+          flex
+          flex-wrap
+          gap-[0.8vw]
+          w-[33.47vw]
+        `}>
+          {projects[currentProject].tags.map((tag, index) => (
+            <div
+              key={index}
+              className={`
+                px-[0.8vw]
+                py-[0.36vh]
+                border
+                border-black
+                rounded-full
+                font-inria
+                text-[0.9375vw]
+              `}
+            >
+              {tag}
+            </div>
+          ))}
         </div>
 
         {/* Project Image */}
