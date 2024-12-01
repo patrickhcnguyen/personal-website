@@ -61,7 +61,7 @@ const AboutMe = () => {
   }, [currentText, isTyping, currentPhraseIndex, isVisible]);
 
   return (
-    <div ref={aboutRef} className="h-[50vh] -mt-[25vh]">
+    <div ref={aboutRef} id="about" className="h-[50vh] -mt-[25vh] mb-[25vh]">
       <div className={`ml-[10vw] font-inria font-bold transition-opacity duration-1000 ${isVisible ? 'opacity-100' : 'opacity-0'}`}>
         <div className="text-[64px] leading-tight">
           Hi! I'm Patrick,<br />
@@ -69,7 +69,7 @@ const AboutMe = () => {
           <span className="animate-blink">|</span>
         </div>
         
-        <div className="mt-8 text-[20px] font-normal max-w-[32vw] leading-relaxed">
+        <div className="mt-8 text-[20px] font-normal max-w-[45vw] leading-relaxed">
           I'm currently a senior at the University of California, Davis,
           where I'm pursuing a Bachelor of Science degree in Computer
           Science. I love using software to create meaningful tools that
