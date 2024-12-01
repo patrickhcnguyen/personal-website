@@ -6,7 +6,7 @@ const Navbar = () => {
   };
 
   return (
-    <nav className="w-full bg-[#9FC2B2] border-b border-black">
+    <nav className="sticky top-0 z-50 w-full bg-[#9FC2B2] border-b border-black">
       <div className="mx-auto w-full h-[12.5vh] px-4 relative">
         <div 
           onClick={scrollToTop}
