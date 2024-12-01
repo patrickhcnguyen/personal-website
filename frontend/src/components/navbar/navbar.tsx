@@ -7,6 +7,17 @@ const Navbar = () => {
     window.scrollTo({ top: 0, behavior: 'smooth' });
   };
 
+  const scrollToAbout = () => {
+    const aboutSection = document.getElementById('about');
+    if (aboutSection) {
+      const offset = aboutSection.getBoundingClientRect().top + window.scrollY + window.innerHeight/4;
+      window.scrollTo({
+        top: offset,
+        behavior: 'smooth'
+      });
+    }
+  };
+
   return (
     <nav className="sticky top-0 z-50 w-full bg-[#9FC2B2] border-b border-black">
       <div className="mx-auto w-full h-[12.5vh] px-4 relative">
@@ -21,7 +32,10 @@ const Navbar = () => {
 
         {/* Desktop View*/}
         <div className="absolute left-[54.69%] top-[50%] -translate-y-1/2 hidden lg:block">
-          <span className="text-black font-bold font-inria text-[14px] whitespace-nowrap">
+          <span 
+            onClick={scrollToAbout}
+            className="text-black font-bold font-inria text-[14px] whitespace-nowrap cursor-pointer hover:opacity-80"
+          >
             About Me
           </span>
           <span className="absolute left-[7.8125vw] text-black font-bold font-inria text-[14px] whitespace-nowrap">
@@ -62,7 +76,12 @@ const Navbar = () => {
           `}
         >
           <div className="flex flex-col py-2">
-            <span className="px-4 py-2 text-black font-bold font-inria text-[14px] cursor-pointer hover:bg-black/5">About Me</span>
+            <span 
+              onClick={scrollToAbout}
+              className="px-4 py-2 text-black font-bold font-inria text-[14px] cursor-pointer hover:bg-black/5"
+            >
+              About Me
+            </span>
             <span className="px-4 py-2 text-black font-bold font-inria text-[14px] cursor-pointer hover:bg-black/5">Experience</span>
             <span className="px-4 py-2 text-black font-bold font-inria text-[14px] cursor-pointer hover:bg-black/5">Projects</span>
             <span className="px-4 py-2 text-black font-bold font-inria text-[14px] cursor-pointer hover:bg-black/5">Contact</span>
