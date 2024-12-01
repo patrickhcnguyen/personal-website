@@ -91,7 +91,7 @@ const Experience = () => {
         <div className={`absolute left-[2vw] top-[4.5vh] font-inria italic text-[min(1.75vh,1.25vw)] text-white transition-opacity duration-1000 ${isVisible ? 'opacity-100' : 'opacity-0'}`}>
           Software Engineer Intern
         </div>
-        <div className={`absolute left-[2vw] top-[7vh] font-inria text-[min(1.45vh,1.25vw)] text-white pr-[15%] leading-tight transition-opacity duration-1000 ${isVisible ? 'opacity-100' : 'opacity-0'}`}>
+        <div className={`absolute left-[2vw] top-[7vh] font-inria text-[min(1.4vh,1.25vw)] text-white pr-[15%] leading-tight transition-opacity duration-1000 ${isVisible ? 'opacity-100' : 'opacity-0'}`}>
           I worked on a Canvas integrated AI powered
           study tool that automatically transcribed
           lecture recordings.
@@ -101,16 +101,16 @@ const Experience = () => {
         <div className={`absolute left-[2vw] top-[1.5vh] font-inria font-bold text-[min(2vh,1.5vw)] text-white transition-opacity duration-1000 ${isVisible ? 'opacity-100' : 'opacity-0'}`}>
           Google Developer Student Club
         </div>
-        <div className={`absolute left-[2vw] top-[4.5vh] font-inria italic text-[min(1.75vh,1.25vw)] text-white transition-opacity duration-1000 ${isVisible ? 'opacity-100' : 'opacity-0'}`}>
+        <div className={`absolute left-[2vw] top-[4.5vh] font-inria italic text-[min(1.75vh,1.15vw)] text-white transition-opacity duration-1000 ${isVisible ? 'opacity-100' : 'opacity-0'}`}>
           Technical Associate
         </div>
-        <div className={`absolute left-[2vw] top-[7vh] font-inria text-[min(1.45vh,1.25vw)] text-white pr-[15%] leading-tight transition-opacity duration-1000 ${isVisible ? 'opacity-100' : 'opacity-0'}`}>
+        <div className={`absolute left-[2vw] top-[7vh] font-inria text-[min(1.4vh,1.15vw)] text-white pr-[15%] leading-tight transition-opacity duration-1000 ${isVisible ? 'opacity-100' : 'opacity-0'}`}>
           I created a full-stack web app that allowed
           users to log and track their health 
           information over the course of a week.
         </div>
       </div>
-      {/* SVG Images */}
+      {/* Work Icons */}
       <div className={`absolute left-[92%] top-[7.5vh] w-[3.91vw] h-[3.91vw] transition-all duration-1000 ${isVisible ? 'opacity-100 scale-100' : 'opacity-0 scale-0'}`}>
         <img src="/irl.svg" alt="Innovation and Research Lab" className="w-full h-full" />
       </div>
