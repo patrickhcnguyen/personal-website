@@ -28,25 +28,25 @@ const Projects = () => {
     swipeDuration: 500,
     preventScrollOnSwipe: true,
     trackMouse: true,
-    delta: 2,
+    delta: 25,
     trackTouch: true,
     touchEventOptions: { passive: true }
   });
 
   const handleWheel = (e: React.WheelEvent) => {
-    e.preventDefault(); 
-    
-    if (!canSwipe) return;
-    
     if (Math.abs(e.deltaX) > Math.abs(e.deltaY)) {  
-      if (e.deltaX > 1 && currentProject < projects.length - 1) {
+      e.preventDefault();
+      
+      if (!canSwipe) return;
+      
+      if (e.deltaX > 25 && currentProject < projects.length - 1) {
         setCurrentProject(prev => prev + 1);
         setCanSwipe(false);
-        setTimeout(() => setCanSwipe(true), 800); 
-      } else if (e.deltaX < -1 && currentProject > 0) {
+        setTimeout(() => setCanSwipe(true), 800);
+      } else if (e.deltaX < -25 && currentProject > 0) {
         setCurrentProject(prev => prev - 1);
         setCanSwipe(false);
-        setTimeout(() => setCanSwipe(true), 800); 
+        setTimeout(() => setCanSwipe(true), 800);
       }
     }
   };
@@ -70,21 +70,21 @@ const Projects = () => {
       }
     );
 
-    const box = projectsRef.current;
-    
-    if (box) {
-      observer.observe(box);
+    if (projectsRef.current) {
+      observer.observe(projectsRef.current);
       
-      const disableScroll = (e: WheelEvent) => {
-        e.preventDefault();
+      const preventHorizontalScroll = (e: WheelEvent) => {
+        if (Math.abs(e.deltaX) > Math.abs(e.deltaY)) {
+          e.preventDefault();
+        }
       };
 
-      box.addEventListener('wheel', disableScroll, { passive: false });
+      projectsRef.current.addEventListener('wheel', preventHorizontalScroll, { passive: false });
       window.addEventListener('keydown', handleKeyDown);
 
       return () => {
         observer.disconnect();
-        box.removeEventListener('wheel', disableScroll);
+        projectsRef.current?.removeEventListener('wheel', preventHorizontalScroll);
         window.removeEventListener('keydown', handleKeyDown);
       };
     }
