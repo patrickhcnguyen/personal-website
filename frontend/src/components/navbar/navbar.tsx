@@ -35,6 +35,21 @@ const Navbar = () => {
     }
   };
 
+  const scrollToProjects = () => {
+    const projectsSection = document.getElementById('projects');
+    if (projectsSection) {
+      const offset = 200;
+      const elementPosition = projectsSection.getBoundingClientRect().top;
+      const offsetPosition = elementPosition + window.pageYOffset - offset;
+      
+      window.scrollTo({
+        top: offsetPosition,
+        behavior: 'smooth'
+      });
+    }
+  }; 
+  
+
   return (
     <nav className="sticky top-0 z-50 w-full bg-[#9FC2B2] border-b border-black">
       <div className="mx-auto w-full h-[12.5vh] px-4 relative">
@@ -61,7 +76,10 @@ const Navbar = () => {
           >
             Experience
           </span>
-          <span className="absolute left-[15.625vw] text-black font-bold font-inria text-[14px] whitespace-nowrap">
+          <span 
+            onClick={scrollToProjects}
+            className="absolute left-[15.625vw] text-black font-bold font-inria text-[14px] whitespace-nowrap cursor-pointer hover:opacity-80"
+          >
             Projects
           </span>
           <span className="absolute left-[23.4375vw] text-black font-bold font-inria text-[14px] whitespace-nowrap">
@@ -108,7 +126,12 @@ const Navbar = () => {
             >
               Experience
             </span>
-            <span className="px-4 py-2 text-black font-bold font-inria text-[14px] cursor-pointer hover:bg-black/5">Projects</span>
+            <span 
+              onClick={scrollToProjects}
+              className="px-4 py-2 text-black font-bold font-inria text-[14px] cursor-pointer hover:bg-black/5"
+            >
+              Projects
+            </span>
             <span className="px-4 py-2 text-black font-bold font-inria text-[14px] cursor-pointer hover:bg-black/5">Contact</span>
             <span className="px-4 py-2 text-black font-bold font-inria text-[14px] cursor-pointer hover:bg-black/5">More!</span>
             <span className="px-4 py-2 text-black font-bold font-inria text-[14px] cursor-pointer hover:bg-black/5">Resume</span>
