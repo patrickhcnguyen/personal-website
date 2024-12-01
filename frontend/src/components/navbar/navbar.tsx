@@ -47,8 +47,25 @@ const Navbar = () => {
         behavior: 'smooth'
       });
     }
-  }; 
-  
+  };
+
+  const scrollToContact = () => {
+    const contactSection = document.getElementById('contact');
+    if (contactSection) {
+      const offset = 200;
+      const elementPosition = contactSection.getBoundingClientRect().top;
+      const offsetPosition = elementPosition + window.pageYOffset - offset;
+      
+      window.scrollTo({
+        top: offsetPosition,
+        behavior: 'smooth'
+      });
+    }
+  };
+
+  const openResume = () => {
+    window.open('/PatrickNguyenResume.pdf', '_blank');
+  };
 
   return (
     <nav className="sticky top-0 z-50 w-full bg-[#9FC2B2] border-b border-black">
@@ -82,13 +99,19 @@ const Navbar = () => {
           >
             Projects
           </span>
-          <span className="absolute left-[23.4375vw] text-black font-bold font-inria text-[14px] whitespace-nowrap">
+          <span 
+            onClick={scrollToContact}
+            className="absolute left-[23.4375vw] text-black font-bold font-inria text-[14px] whitespace-nowrap cursor-pointer hover:opacity-80"
+          >
             Contact
           </span>
           <span className="absolute left-[31.25vw] text-black font-bold font-inria text-[14px] whitespace-nowrap">
             More!
           </span>
-          <span className="absolute left-[39.0625vw] text-black font-bold font-inria text-[14px] whitespace-nowrap">
+          <span 
+            onClick={openResume}
+            className="absolute left-[39.0625vw] text-black font-bold font-inria text-[14px] whitespace-nowrap cursor-pointer hover:opacity-80"
+          >
             Resume
           </span>
         </div>
@@ -132,9 +155,19 @@ const Navbar = () => {
             >
               Projects
             </span>
-            <span className="px-4 py-2 text-black font-bold font-inria text-[14px] cursor-pointer hover:bg-black/5">Contact</span>
+            <span 
+              onClick={scrollToContact}
+              className="px-4 py-2 text-black font-bold font-inria text-[14px] cursor-pointer hover:bg-black/5"
+            >
+              Contact
+            </span>
+            <span 
+              onClick={openResume}
+              className="px-4 py-2 text-black font-bold font-inria text-[14px] cursor-pointer hover:bg-black/5"
+            >
+              Resume
+            </span>
             <span className="px-4 py-2 text-black font-bold font-inria text-[14px] cursor-pointer hover:bg-black/5">More!</span>
-            <span className="px-4 py-2 text-black font-bold font-inria text-[14px] cursor-pointer hover:bg-black/5">Resume</span>
           </div>
         </div>
       </div>
