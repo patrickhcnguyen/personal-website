@@ -40,7 +40,7 @@ const Contact = () => {
         </div>
         
         {/* Form Container */}
-        <div className="mt-[3.37vh] flex flex-col items-center gap-[2vh]">
+        <div className="mt-[3.37vh] flex flex-col items-center gap-[1vh]">
           <input 
             type="email"
             placeholder="Your email"
@@ -51,6 +51,12 @@ const Contact = () => {
             placeholder="Your message"
             className="w-[25vw] h-[29vh] bg-[#FFFFFF] rounded-[15px] p-4 font-inria resize-none"
           />
+
+          {/* Submit Button */}
+          <button className="flex items-center gap-2 bg-[#FFFFFF] px-6 py-2 rounded-[15px] font-inria hover:opacity-80 transition-opacity">
+            Submit
+            <img src="/submit.svg" alt="Submit" className="w-4 h-4" />
+          </button>
         </div>
       </div>
     </div>
