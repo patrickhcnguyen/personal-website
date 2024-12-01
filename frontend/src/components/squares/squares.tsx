@@ -46,7 +46,7 @@ const Squares = () => {
   return (
     <div className="fixed inset-0 pointer-events-none">
 
-      {/* Green Square with Text */}
+      {/* Green Square */}
       <div 
         className={`
           absolute 
@@ -137,7 +137,7 @@ const Squares = () => {
             text-black
             font-inria
             font-bold
-            text-[2vw]
+            text-[1.8vw]
             transition-opacity
             duration-500
             ${yellowVisible ? 'opacity-100' : 'opacity-0'}
