@@ -100,7 +100,7 @@ const Projects = () => {
       </div>
         
       {/* Project Box */}
-      <div
+      <div 
         {...handlers}
         onWheel={handleWheel}
         className={`
@@ -128,6 +128,25 @@ const Projects = () => {
         `}>
           {projects[currentProject]}
         </div>
+      </div>
+
+      {/* Navigation Dots */}
+      <div className="absolute left-[30vw] top-[43vh] flex gap-[15vw]">
+        {projects.map((_, index) => (
+          <div
+            key={index}
+            className={`
+              w-[0.9375vw]
+              h-[1.44vh]
+              rounded-full
+              border
+              border-black
+              transition-colors
+              duration-300
+              ${currentProject === index ? 'bg-black' : 'bg-transparent'}
+            `}
+          />
+        ))}
       </div>
     </div>
   );
