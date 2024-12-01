@@ -70,11 +70,11 @@ const AboutMe = () => {
         </div>
         
         <div className="mt-8 text-[20px] font-normal max-w-[32vw] leading-relaxed">
-          I'm currently a senior at the University of California, Davis,
-          where I'm pursuing a Bachelor of Science degree in Computer
-          Science. I love using software to create meaningful tools that
-          can positively impact my community and improve people's lives.
-          My biggest motivation in software development lies in its power
+          I'm a senior at the University of California, Davis, where
+          I'm pursuing a Bachelor of Science degree in Computer Science.
+          I love using software to create meaningful tools that can
+          positively impact my community and improve people's lives. My
+          biggest motivation in software development lies in its power
           to drive change and improve everyday experiences.
           
           <br /><br />
