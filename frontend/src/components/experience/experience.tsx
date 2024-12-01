@@ -60,55 +60,71 @@ const Experience = () => {
       </div>
       {/* Orange Bubbles */}
       <div className={`absolute left-[66.9%] top-[5.5vh] w-[23vw] h-[15vh] bg-[#C05200] rounded-full transition-all duration-1000 ${isVisible ? 'scale-100 opacity-100' : 'scale-0 opacity-0'}`}>
-        <div className={`absolute left-[2vw] top-[1.5vh] font-inria font-bold text-[2vh] text-white transition-opacity duration-1000 ${isVisible ? 'opacity-100' : 'opacity-0'}`}>
+        <div className={`absolute left-[2vw] top-[1.5vh] font-inria font-bold text-[min(2vh,1.5vw)] text-white transition-opacity duration-1000 ${isVisible ? 'opacity-100' : 'opacity-0'}`}>
           Innovation and Research Lab
         </div>
-        <div className={`absolute left-[2vw] top-[4.5vh] font-inria italic text-[1.75vh] text-white transition-opacity duration-1000 ${isVisible ? 'opacity-100' : 'opacity-0'}`}>
+        <div className={`absolute left-[2vw] top-[4.5vh] font-inria italic text-[min(1.75vh,1.25vw)] text-white transition-opacity duration-1000 ${isVisible ? 'opacity-100' : 'opacity-0'}`}>
           Software Engineer
         </div>
-        <div className={`absolute left-[2vw] top-[7vh] font-inria text-[1.4vh] text-white pr-[15%] transition-opacity duration-1000 ${isVisible ? 'opacity-100' : 'opacity-0'}`}>
+        <div className={`absolute left-[2vw] top-[7vh] font-inria text-[min(1.45vh,1.25vw)] text-white pr-[15%] leading-tight transition-opacity duration-1000 ${isVisible ? 'opacity-100' : 'opacity-0'}`}>
           I collaborate with the researchers of the lab
           to create solutions based on problems that
           UC Davis students have.
         </div>
       </div>
       <div className={`absolute left-[33.16%] top-[25.5vh] w-[23vw] h-[15vh] bg-[#C05200] rounded-full transition-all duration-1000 ${isVisible ? 'scale-100 opacity-100' : 'scale-0 opacity-0'}`}>
-        <div className={`absolute left-[2vw] top-[1.5vh] font-inria font-bold text-[2vh] text-white transition-opacity duration-1000 ${isVisible ? 'opacity-100' : 'opacity-0'}`}>
+        <div className={`absolute left-[2vw] top-[1.5vh] font-inria font-bold text-[min(2vh,1.5vw)] text-white transition-opacity duration-1000 ${isVisible ? 'opacity-100' : 'opacity-0'}`}>
           AggieWorks
         </div>
-        <div className={`absolute left-[2vw] top-[4.5vh] font-inria italic text-[1.75vh] text-white transition-opacity duration-1000 ${isVisible ? 'opacity-100' : 'opacity-0'}`}>
+        <div className={`absolute left-[2vw] top-[4.5vh] font-inria italic text-[min(1.75vh,1.25vw)] text-white transition-opacity duration-1000 ${isVisible ? 'opacity-100' : 'opacity-0'}`}>
           Software Engineer
         </div>
-        <div className={`absolute left-[2vw] top-[7vh] font-inria text-[1.4vh] text-white pr-[15%] transition-opacity duration-1000 ${isVisible ? 'opacity-100' : 'opacity-0'}`}>
+        <div className={`absolute left-[2vw] top-[7vh] font-inria text-[min(1.45vh,1.25vw)] text-white pr-[15%] leading-tight transition-opacity duration-1000 ${isVisible ? 'opacity-100' : 'opacity-0'}`}>
           I’m working on the AggieMenus PWA and 
           mobile app for 38,000 + students.
         </div>
       </div>
       <div className={`absolute left-[66.9%] top-[45.5vh] w-[23vw] h-[15vh] bg-[#C05200] rounded-full transition-all duration-1000 ${isVisible ? 'scale-100 opacity-100' : 'scale-0 opacity-0'}`}>
-        <div className={`absolute left-[2vw] top-[1.5vh] font-inria font-bold text-[2vh] text-white transition-opacity duration-1000 ${isVisible ? 'opacity-100' : 'opacity-0'}`}>
+        <div className={`absolute left-[2vw] top-[1.5vh] font-inria font-bold text-[min(2vh,1.5vw)] text-white transition-opacity duration-1000 ${isVisible ? 'opacity-100' : 'opacity-0'}`}>
           Icarus Development
         </div>
-        <div className={`absolute left-[2vw] top-[4.5vh] font-inria italic text-[1.75vh] text-white transition-opacity duration-1000 ${isVisible ? 'opacity-100' : 'opacity-0'}`}>
+        <div className={`absolute left-[2vw] top-[4.5vh] font-inria italic text-[min(1.75vh,1.25vw)] text-white transition-opacity duration-1000 ${isVisible ? 'opacity-100' : 'opacity-0'}`}>
           Software Engineer Intern
         </div>
-        <div className={`absolute left-[2vw] top-[7vh] font-inria text-[1.4vh] text-white pr-[15%] transition-opacity duration-1000 ${isVisible ? 'opacity-100' : 'opacity-0'}`}>
+        <div className={`absolute left-[2vw] top-[7vh] font-inria text-[min(1.45vh,1.25vw)] text-white pr-[15%] leading-tight transition-opacity duration-1000 ${isVisible ? 'opacity-100' : 'opacity-0'}`}>
           I worked on a Canvas integrated AI powered
           study tool that automatically transcribed
           lecture recordings.
         </div>
       </div>
       <div className={`absolute left-[33.16%] top-[65.5vh] w-[23vw] h-[15vh] bg-[#C05200] rounded-full transition-all duration-1000 ${isVisible ? 'scale-100 opacity-100' : 'scale-0 opacity-0'}`}>
-        <div className={`absolute left-[2vw] top-[1.5vh] font-inria font-bold text-[2vh] text-white transition-opacity duration-1000 ${isVisible ? 'opacity-100' : 'opacity-0'}`}>
+        <div className={`absolute left-[2vw] top-[1.5vh] font-inria font-bold text-[min(2vh,1.5vw)] text-white transition-opacity duration-1000 ${isVisible ? 'opacity-100' : 'opacity-0'}`}>
           Google Developer Student Club
         </div>
-        <div className={`absolute left-[2vw] top-[4.5vh] font-inria italic text-[1.75vh] text-white transition-opacity duration-1000 ${isVisible ? 'opacity-100' : 'opacity-0'}`}>
+        <div className={`absolute left-[2vw] top-[4.5vh] font-inria italic text-[min(1.75vh,1.25vw)] text-white transition-opacity duration-1000 ${isVisible ? 'opacity-100' : 'opacity-0'}`}>
           Technical Associate
         </div>
-        <div className={`absolute left-[2vw] top-[7vh] font-inria text-[1.4vh] text-white pr-[15%] transition-opacity duration-1000 ${isVisible ? 'opacity-100' : 'opacity-0'}`}>
+        <div className={`absolute left-[2vw] top-[7vh] font-inria text-[min(1.45vh,1.25vw)] text-white pr-[15%] leading-tight transition-opacity duration-1000 ${isVisible ? 'opacity-100' : 'opacity-0'}`}>
           I created a full-stack web app that allowed
           users to log and track their health 
           information over the course of a week.
         </div>
+      </div>
+      {/* SVG Images */}
+      <div className={`absolute left-[92%] top-[7.5vh] w-[3.91vw] h-[3.91vw] transition-all duration-1000 ${isVisible ? 'opacity-100 scale-100' : 'opacity-0 scale-0'}`}>
+        <img src="/irl.svg" alt="Innovation and Research Lab" className="w-full h-full" />
+      </div>
+
+      <div className={`absolute left-[25%] top-[27.5vh] w-[3.91vw] h-[3.91vw] transition-all duration-1000 ${isVisible ? 'opacity-100 scale-100' : 'opacity-0 scale-0'}`}>
+        <img src="/aggieworks.svg" alt="AggieWorks" className="w-full h-full" />
+      </div>
+
+      <div className={`absolute left-[92%] top-[47.5vh] w-[3.91vw] h-[3.91vw] transition-all duration-1000 ${isVisible ? 'opacity-100 scale-100' : 'opacity-0 scale-0'}`}>
+        <img src="/icarusdevelopment.svg" alt="Icarus Development" className="w-full h-full" />
+      </div>
+
+      <div className={`absolute left-[25%] top-[67.5vh] w-[3.91vw] h-[3.91vw] transition-all duration-1000 ${isVisible ? 'opacity-100 scale-100' : 'opacity-0 scale-0'}`}>
+        <img src="/gdsc.svg" alt="Google Developer Student Club" className="w-full h-full" />
       </div>
     </div>
   );
