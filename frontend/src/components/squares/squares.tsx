@@ -71,11 +71,11 @@ const Squares = () => {
             w-[9.375vw]
             h-[10.697vh]
             left-[0.5vw]
-            top-[17.02vh]
+            top-[15.02vh]
             text-[#F5D0B3]
             font-inria
             font-bold
-            text-[2.5rem]
+            text-[2.5vw]
             leading-tight
             transition-opacity
             duration-500
@@ -137,7 +137,7 @@ const Squares = () => {
             text-black
             font-inria
             font-bold
-            text-[2rem]
+            text-[2vw]
             transition-opacity
             duration-500
             ${yellowVisible ? 'opacity-100' : 'opacity-0'}
@@ -189,22 +189,24 @@ const Squares = () => {
         <div 
           className={`
             absolute
-            w-[14.69vw]
+            w-[14vw]
             left-1/2
             ml-[1vw]
             text-[#BEAD8E]
             font-inria
             font-bold
-            text-[1rem]
+            text-[1.1vw]
             leading-tight
             transition-opacity
             duration-500
+            whitespace-pre-wrap
             ${redVisible ? 'opacity-100' : 'opacity-0'}
           `}
         >
-          I'm a 4th year student at UC Davis<br />
-          and fullstack SWE passionate<br />
-          about creating user driven<br />
+          I'm a 4th year student at
+          UC Davis and fullstack
+          SWE passionate about
+          creating user driven
           products
         </div>
       </div>
