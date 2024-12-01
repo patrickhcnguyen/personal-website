@@ -10,9 +10,26 @@ const Navbar = () => {
   const scrollToAbout = () => {
     const aboutSection = document.getElementById('about');
     if (aboutSection) {
-      const offset = aboutSection.getBoundingClientRect().top + window.scrollY + window.innerHeight/4;
+      const offset = 150;
+      const elementPosition = aboutSection.getBoundingClientRect().top;
+      const offsetPosition = elementPosition + window.pageYOffset - offset;
+      
       window.scrollTo({
-        top: offset,
+        top: offsetPosition,
+        behavior: 'smooth'
+      });
+    }
+  };
+
+  const scrollToExperience = () => {
+    const experienceSection = document.getElementById('experience');
+    if (experienceSection) {
+      const offset = 200;
+      const elementPosition = experienceSection.getBoundingClientRect().top;
+      const offsetPosition = elementPosition + window.pageYOffset - offset;
+      
+      window.scrollTo({
+        top: offsetPosition,
         behavior: 'smooth'
       });
     }
@@ -38,7 +55,10 @@ const Navbar = () => {
           >
             About Me
           </span>
-          <span className="absolute left-[7.8125vw] text-black font-bold font-inria text-[14px] whitespace-nowrap">
+          <span 
+            onClick={scrollToExperience}
+            className="absolute left-[7.8125vw] text-black font-bold font-inria text-[14px] whitespace-nowrap cursor-pointer hover:opacity-80"
+          >
             Experience
           </span>
           <span className="absolute left-[15.625vw] text-black font-bold font-inria text-[14px] whitespace-nowrap">
@@ -82,7 +102,12 @@ const Navbar = () => {
             >
               About Me
             </span>
-            <span className="px-4 py-2 text-black font-bold font-inria text-[14px] cursor-pointer hover:bg-black/5">Experience</span>
+            <span 
+              onClick={scrollToExperience}
+              className="px-4 py-2 text-black font-bold font-inria text-[14px] cursor-pointer hover:bg-black/5"
+            >
+              Experience
+            </span>
             <span className="px-4 py-2 text-black font-bold font-inria text-[14px] cursor-pointer hover:bg-black/5">Projects</span>
             <span className="px-4 py-2 text-black font-bold font-inria text-[14px] cursor-pointer hover:bg-black/5">Contact</span>
             <span className="px-4 py-2 text-black font-bold font-inria text-[14px] cursor-pointer hover:bg-black/5">More!</span>
