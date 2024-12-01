@@ -1,4 +1,4 @@
-import { useEffect, useState } from 'react';
+import { useEffect, useState, useRef } from 'react';
 
 const Squares = () => {
   const [greenVisible, setGreenVisible] = useState(false);
@@ -7,31 +7,29 @@ const Squares = () => {
   const [lightBrownVisible, setLightBrownVisible] = useState(false);
   const [redVisible, setRedVisible] = useState(false);
   const [textVisible, setTextVisible] = useState(false);
+  const [fadeAway, setFadeAway] = useState(false);
+  const squaresRef = useRef<HTMLDivElement>(null);
 
   useEffect(() => {
-    const greenTimer = setTimeout(() => {
-      setGreenVisible(true);
-    }, 300);
+    const handleScroll = () => {
+      if (squaresRef.current) {
+        const rect = squaresRef.current.getBoundingClientRect();
+        const fadeThreshold = window.innerHeight / 2;
+        setFadeAway(rect.top < -fadeThreshold);
+      }
+    };
 
-    const textTimer = setTimeout(() => {
-      setTextVisible(true);
-    }, 450);
+    window.addEventListener('scroll', handleScroll);
+    return () => window.removeEventListener('scroll', handleScroll);
+  }, []);
 
-    const brownTimer = setTimeout(() => {
-      setBrownVisible(true);
-    }, 600);
-
-    const yellowTimer = setTimeout(() => {
-      setYellowVisible(true);
-    }, 900);
-
-    const lightBrownTimer = setTimeout(() => {
-      setLightBrownVisible(true);
-    }, 1200);
-
-    const redTimer = setTimeout(() => {
-      setRedVisible(true);
-    }, 1600);
+  useEffect(() => {
+    const greenTimer = setTimeout(() => setGreenVisible(true), 300);
+    const textTimer = setTimeout(() => setTextVisible(true), 450);
+    const brownTimer = setTimeout(() => setBrownVisible(true), 600);
+    const yellowTimer = setTimeout(() => setYellowVisible(true), 900);
+    const lightBrownTimer = setTimeout(() => setLightBrownVisible(true), 1200);
+    const redTimer = setTimeout(() => setRedVisible(true), 1600);
 
     return () => {
       clearTimeout(greenTimer);
@@ -44,8 +42,16 @@ const Squares = () => {
   }, []);
 
   return (
-    <div className="fixed inset-0 pointer-events-none">
-
+    <div 
+      ref={squaresRef} 
+      className={`
+        relative 
+        h-screen 
+        transition-opacity 
+        duration-700
+        ${fadeAway ? 'opacity-0' : 'opacity-100'}
+      `}
+    >
       {/* Green Square */}
       <div 
         className={`
@@ -53,7 +59,7 @@ const Squares = () => {
           w-[20.39vw] 
           h-[26.68vh] 
           left-[calc(10vw+15.08vw+0.234vw)]
-          top-[25.96vh]
+          top-[15vh]
           bg-[#407A54]
           transition-all 
           duration-700
@@ -94,7 +100,7 @@ const Squares = () => {
           w-[15.08vw] 
           h-[34.74vh] 
           left-[10vw]
-          top-[25.96vh]
+          top-[15vh]
           bg-[#6A5550]
           transition-all 
           duration-700
@@ -114,7 +120,7 @@ const Squares = () => {
           w-[14.69vw] 
           h-[7.57vh] 
           left-[calc(10vw+15.08vw+0.234vw)]
-          top-[calc(25.96vh+26.68vh+0.361vh)]
+          top-[calc(15vh+26.68vh+0.361vh)]
           bg-[#FEC439]
           transition-all 
           duration-700
@@ -154,7 +160,7 @@ const Squares = () => {
           w-[5.39vw] 
           h-[20.79vh] 
           left-[calc(10vw+15.08vw+0.234vw+14.69vw+0.234vw)]
-          top-[calc(25.96vh+26.68vh+0.361vh)]
+          top-[calc(15vh+26.68vh+0.361vh)]
           bg-[#AA835C]
           transition-all 
           duration-700
@@ -174,7 +180,7 @@ const Squares = () => {
           w-[30.08vw] 
           h-[12.74vh] 
           left-[10vw]
-          top-[calc(25.96vh+34.74vh+0.361vh)]
+          top-[calc(15vh+34.74vh+0.361vh)]
           bg-[#C03B2A]
           transition-all 
           duration-700
