@@ -8,6 +8,7 @@ const Squares = () => {
   const [redVisible, setRedVisible] = useState(false);
   const [textVisible, setTextVisible] = useState(false);
   const [fadeAway, setFadeAway] = useState(false);
+  const [isInView, setIsInView] = useState(false);
   const squaresRef = useRef<HTMLDivElement>(null);
 
   useEffect(() => {
@@ -15,15 +16,34 @@ const Squares = () => {
       if (squaresRef.current) {
         const rect = squaresRef.current.getBoundingClientRect();
         const fadeThreshold = window.innerHeight / 2;
-        setFadeAway(rect.top < -fadeThreshold);
+        const newFadeAway = rect.top < -fadeThreshold;
+        setFadeAway(newFadeAway);
+        
+        // Check if component is in view
+        const isVisible = rect.top < window.innerHeight && rect.bottom >= 0;
+        setIsInView(isVisible);
+        
+        // Reset animations when component is out of view
+        if (!isVisible) {
+          setGreenVisible(false);
+          setBrownVisible(false);
+          setYellowVisible(false);
+          setLightBrownVisible(false);
+          setRedVisible(false);
+          setTextVisible(false);
+        }
       }
     };
 
     window.addEventListener('scroll', handleScroll);
+    // Initial check
+    handleScroll();
     return () => window.removeEventListener('scroll', handleScroll);
   }, []);
 
   useEffect(() => {
+    if (!isInView) return;
+
     const greenTimer = setTimeout(() => setGreenVisible(true), 300);
     const textTimer = setTimeout(() => setTextVisible(true), 450);
     const brownTimer = setTimeout(() => setBrownVisible(true), 600);
@@ -39,7 +59,7 @@ const Squares = () => {
       clearTimeout(lightBrownTimer);
       clearTimeout(redTimer);
     };
-  }, []);
+  }, [isInView]);
 
   return (
     <div 
