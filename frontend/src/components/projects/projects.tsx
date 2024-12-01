@@ -1,17 +1,39 @@
 import { useRef, useState, useEffect } from 'react';
 import { useSwipeable } from 'react-swipeable';
 
+interface Project {
+  title: string;
+  description: string;
+  image: string;
+}
+
 const Projects = () => {
   const [isVisible, setIsVisible] = useState(false);
   const [currentProject, setCurrentProject] = useState(0);
   const [canSwipe, setCanSwipe] = useState(true);
   const projectsRef = useRef<HTMLDivElement>(null);
 
-  const projects = [
-    "Statify",
-    "Physarum Slime Simulator",
-    "AggieMenus",
-    "Library Recommender"
+  const projects: Project[] = [
+    {
+      title: "Statify",
+      description: "I developed a community based way to view\nyour Spotify Stats, alongside a playlist maker,\nsong recommender, and playlist image\ngenerator.",
+      image: "/spotify.svg"
+    },
+    {
+      title: "Physarum Slime Simulator",
+      description: "Inspired by the Physarum Slime Mold, I made a web simulator to \nemulate the behavior of the slime mold.",
+      image: "/physarum.svg"
+    },
+    {
+      title: "AggieMenus",
+      description: "I worked on a team of 5 to develop AggieMenus, a PWA and mobile\napp that centralizes UC Davis dining commons menus to simplify\n browsing and switching between dining hall, locations, dates, and\n meal times.",
+      image: "/aggiemenus.svg"
+    },
+    {
+      title: "Library Recommender",
+      description: "Using Kaggle’s dataset of over 50,000 Amazon book reviews, I\ndeveloped a book recommender that recommends the user books\nbased on prompts the user inputs in.",
+      image: "/libraryrecommender.svg"
+    }
   ];
 
   const handlers = useSwipeable({
@@ -118,6 +140,7 @@ const Projects = () => {
           ${isVisible ? 'opacity-100 scale-100' : 'opacity-0 scale-95'}
         `}
       >
+        {/* Project Title */}
         <div className={`
           absolute 
           left-[3.05vw] 
@@ -126,7 +149,36 @@ const Projects = () => {
           font-bold 
           text-[2.5vw]
         `}>
-          {projects[currentProject]}
+          {projects[currentProject].title}
+        </div>
+
+        {/* Project Description */}
+        <div className={`
+          absolute
+          left-[3.05vw]
+          top-[10vh]
+          w-[36vw]
+          h-[25vh]
+          font-inria
+          text-[1vw]
+          whitespace-pre-line
+        `}>
+          {projects[currentProject].description}
+        </div>
+
+        {/* Project Image */}
+        <div className={`
+          absolute
+          right-[1.48vw]
+          top-[1.32vh]
+          w-[13.67vw]
+          h-[21.03vh]
+        `}>
+          <img 
+            src={projects[currentProject].image} 
+            alt={projects[currentProject].title}
+            className="w-full h-full object-contain"
+          />
         </div>
       </div>
 
