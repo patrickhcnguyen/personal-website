@@ -105,6 +105,11 @@ const Contact = () => {
             <img src="/submit.svg" alt="Submit" className="w-4 h-4" />
           </button>
         </form>
+        
+        {/* Copyright text */}
+        <div className="mt-8 text-[12px] font-inria text-black/70">
+          © Copyright 2024, Patrick Nguyen
+        </div>
       </div>
     </div>
   );
