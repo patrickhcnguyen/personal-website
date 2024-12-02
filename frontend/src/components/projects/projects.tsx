@@ -1,5 +1,6 @@
 import { useRef, useState, useEffect } from 'react';
 import { useSwipeable } from 'react-swipeable';
+import { useIsMobile } from '../../hooks/useIsMobile';
 
 interface Project {
   title: string;
@@ -14,6 +15,7 @@ const Projects = () => {
   const [currentProject, setCurrentProject] = useState(0);
   const [canSwipe, setCanSwipe] = useState(true);
   const projectsRef = useRef<HTMLDivElement>(null);
+  const isMobile = useIsMobile();
 
   const projects: Project[] = [
     {
@@ -57,16 +59,14 @@ const Projects = () => {
         setCurrentProject(prev => prev - 1);
       }
     },
-    swipeDuration: 500,
-    preventScrollOnSwipe: true,
-    trackMouse: true,
-    delta: 25,
+    trackMouse: false,
     trackTouch: true,
-    touchEventOptions: { passive: true }
+    delta: 10,
+    swipeDuration: 500
   });
 
   const handleWheel = (e: React.WheelEvent) => {
-    if (Math.abs(e.deltaX) > Math.abs(e.deltaY)) {  
+    if (Math.abs(e.deltaX) > Math.abs(e.deltaY)) {
       e.preventDefault();
       
       if (!canSwipe) return;
@@ -87,6 +87,18 @@ const Projects = () => {
     if (e.key === 'ArrowLeft' && currentProject > 0) {
       setCurrentProject(prev => prev - 1);
     } else if (e.key === 'ArrowRight' && currentProject < projects.length - 1) {
+      setCurrentProject(prev => prev + 1);
+    }
+  };
+
+  const handleTapLeft = () => {
+    if (currentProject > 0) {
+      setCurrentProject(prev => prev - 1);
+    }
+  };
+
+  const handleTapRight = () => {
+    if (currentProject < projects.length - 1) {
       setCurrentProject(prev => prev + 1);
     }
   };
@@ -145,122 +157,169 @@ const Projects = () => {
   }, []);
 
   return (
-    <div ref={projectsRef} id="projects" className="h-[50vh] mb-[45vh] relative">
+    <div ref={projectsRef} id="projects" className={`
+      relative
+      ${isMobile ? 'mt-[100px] min-h-screen px-5 py-8' : 'h-[50vh] mb-[45vh]'}
+    `}>
       {/* Title */}
-      <div className={`absolute left-[10vw] top-[-5vh] transition-all duration-1000 ${isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-[20px]'}`}>
-        <div className="text-[64px] leading-tight font-inria font-bold">
+      <div className={`
+        ${isMobile ? 'mb-12' : 'absolute left-[10vw] top-[-5vh]'}
+        transition-all duration-1000 
+        ${isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-[20px]'}
+      `}>
+        <div className={`
+          ${isMobile ? 'text-[36px]' : 'text-[64px]'}
+          leading-tight font-inria font-bold
+        `}>
           Projects
         </div>
       </div>
         
-      {/* Project Box */}
-      <div 
-        {...handlers}
-        onWheel={handleWheel}
-        className={`
-          absolute
-          left-[25vw]
-          top-[5vh]
-          w-[60vw]
-          h-[35vh]
-          bg-[#FAE1C3]
-          rounded-[1.17vw]
-          transition-all
-          duration-1000
-          select-none
-          overflow-hidden
-          ${isVisible ? 'opacity-100 scale-100' : 'opacity-0 scale-95'}
-        `}
-      >
-        {/* Project Title */}
-        <div className={`
-          absolute 
-          left-[3.05vw] 
-          top-[2.52vh] 
-          font-inria 
-          font-bold 
-          text-[2.5vw]
-        `}>
-          {projects[currentProject].title}
-        </div>
+      {/* Project Box Container */}
+      <div className="relative">
+        {/* Left Tap Area */}
+        {isMobile && (
+          <div 
+            onClick={handleTapLeft}
+            className={`
+              absolute 
+              left-0 
+              top-0 
+              w-[20%] 
+              h-full 
+              z-10
+              ${currentProject > 0 ? 'cursor-pointer' : 'cursor-not-allowed'}
+            `}
+          />
+        )}
 
-        {/* Project Description */}
-        <div className={`
-          absolute
-          left-[3.05vw]
-          top-[10vh]
-          w-[36vw]
-          h-[25vh]
-          font-inria
-          text-[1vw]
-          whitespace-pre-line
-        `}>
-          {projects[currentProject].description}
-        </div>
+        {/* Right Tap Area */}
+        {isMobile && (
+          <div 
+            onClick={handleTapRight}
+            className={`
+              absolute 
+              right-0 
+              top-0 
+              w-[20%] 
+              h-full 
+              z-10
+              ${currentProject < projects.length - 1 ? 'cursor-pointer' : 'cursor-not-allowed'}
+            `}
+          />
+        )}
 
-        {/* Project Tags */}
-        <div className={`
-          absolute
-          left-[3.05vw]
-          bottom-[2.52vh]
-          flex
-          flex-wrap
-          gap-[0.8vw]
-          w-[33.47vw]
-        `}>
-          {projects[currentProject].tags.map((tag, index) => (
-            <div
-              key={index}
-              className={`
-                px-[0.8vw]
-                py-[0.36vh]
-                border
-                border-black
-                rounded-full
-                font-inria
-                text-[0.9375vw]
-              `}
-            >
-              {tag}
-            </div>
-          ))}
-        </div>
-
-        {/* Project Image */}
-        <a 
-          href={projects[currentProject].url}
-          target="_blank"
-          rel="noopener noreferrer"
+        {/* Project Box */}
+        <div 
+          {...(isMobile ? handlers : {})}
+          onWheel={handleWheel}
           className={`
-            absolute
-            right-[1.48vw]
-            top-[1.32vh]
-            w-[13.67vw]
-            h-[21.03vh]
-            cursor-pointer
+            ${isMobile ? 'relative mt-4' : 'absolute left-[25vw] top-[5vh]'}
+            ${isMobile ? 'w-full' : 'w-[60vw]'}
+            ${isMobile ? 'min-h-[500px]' : 'h-[35vh]'}
+            bg-[#FAE1C3]
+            ${isMobile ? 'rounded-[20px]' : 'rounded-[1.17vw]'}
+            transition-all
+            duration-1000
+            select-none
+            overflow-hidden
+            ${isVisible ? 'opacity-100 scale-100' : 'opacity-0 scale-95'}
+            touch-pan-y
           `}
         >
-          <img 
-            src={projects[currentProject].image} 
-            alt={projects[currentProject].title}
-            className="w-full h-full object-contain"
-          />
-        </a>
+
+          {/* Project Content */}
+          <div className="relative h-full">
+            {/* Project Image */}
+            <a 
+              href={projects[currentProject].url}
+              target="_blank"
+              rel="noopener noreferrer"
+              className={`
+                absolute
+                ${isMobile ? 'right-4 top-4 w-[120px] h-[80px]' : 'right-[1.48vw] top-[1.32vh] w-[13.67vw] h-[21.03vh]'}
+                cursor-pointer
+                z-20
+              `}
+            >
+              <img 
+                src={projects[currentProject].image} 
+                alt={projects[currentProject].title}
+                className="w-full h-full object-contain"
+              />
+            </a>
+
+            {/* Project Title */}
+            <div className={`
+              absolute 
+              ${isMobile ? 'left-4 top-4 pr-[140px]' : 'left-[3.05vw] top-[2.52vh]'}
+              ${isMobile ? 'text-[24px]' : 'text-[2.5vw]'}
+              font-inria 
+              font-bold 
+              break-words
+              z-20
+            `}>
+              {projects[currentProject].title}
+            </div>
+
+            {/* Project Description */}
+            <div className={`
+              absolute
+              ${isMobile ? 'left-4 top-[100px] pr-4' : 'left-[3.05vw] top-[10vh]'}
+              ${isMobile ? 'w-[calc(100%-32px)]' : 'w-[36vw]'}
+              ${isMobile ? 'text-[14px]' : 'text-[1vw]'}
+              font-inria
+              whitespace-pre-line
+              z-20
+            `}>
+              {projects[currentProject].description}
+            </div>
+
+            {/* Project Tags */}
+            <div className={`
+              absolute
+              ${isMobile ? 'left-4 bottom-4 right-4' : 'left-[3.05vw] bottom-[2.52vh]'}
+              flex
+              flex-wrap
+              gap-2
+              ${isMobile ? 'w-auto' : 'w-[33.47vw]'}
+              z-20
+            `}>
+              {projects[currentProject].tags.map((tag, index) => (
+                <div
+                  key={index}
+                  className={`
+                    ${isMobile ? 'px-3 py-1 text-[12px]' : 'px-[0.8vw] py-[0.36vh] text-[0.9375vw]'}
+                    border
+                    border-black
+                    rounded-full
+                    font-inria
+                  `}
+                >
+                  {tag}
+                </div>
+              ))}
+            </div>
+          </div>
+        </div>
       </div>
 
       {/* Navigation Dots */}
-      <div className="absolute left-[30vw] top-[43vh] flex gap-[15vw]">
+      <div className={`
+        ${isMobile ? 'relative mt-8 mb-16 flex justify-center gap-4' : 'absolute left-[30vw] top-[43vh] flex gap-[15vw]'}
+      `}>
         {projects.map((_, index) => (
           <div
             key={index}
+            onClick={() => setCurrentProject(index)}
             className={`
-              w-[0.9375vw]
-              h-[1.44vh]
+              ${isMobile ? 'w-3 h-3' : 'w-[0.9375vw] h-[1.44vh]'}
               rounded-full
               border
               border-black
               transition-colors
               duration-300
+              cursor-pointer
               ${currentProject === index ? 'bg-black' : 'bg-transparent'}
             `}
           />
