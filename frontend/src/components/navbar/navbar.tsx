@@ -1,6 +1,5 @@
 import { useState, useEffect } from "react";
 
-// Custom hook to detect mobile screen size
 const useIsMobile = () => {
   const [isMobile, setIsMobile] = useState(false);
 
@@ -9,13 +8,10 @@ const useIsMobile = () => {
       setIsMobile(window.innerWidth <= 768);
     };
 
-    // Check initially
     checkIsMobile();
 
-    // Add event listener for window resize
     window.addEventListener('resize', checkIsMobile);
 
-    // Cleanup
     return () => window.removeEventListener('resize', checkIsMobile);
   }, []);
 
@@ -100,40 +96,41 @@ const Navbar = () => {
   };
 
   return (
-    <nav className="sticky top-0 z-[999] w-full overflow-x-hidden">
+    <nav className={`${isMobile ? 'fixed' : 'sticky'} top-0 left-0 right-0 z-[999]`}>
       {isMobile ? (
         // Mobile Layout (390 x 844)
-        <div className="h-[83px] relative bg-[#9FC2B2] border-b border-black w-screen">
-          {/* Logo/Name Button */}
-          <div 
-            onClick={scrollToTop}
-            className="absolute left-[7px] top-[22px] w-[120px] h-[39px] border border-black rounded-full flex items-center justify-center cursor-pointer hover:bg-black/5 transition-colors"
-          >
-            <span className="text-black font-bold font-inria text-[14px]">
-              patrick.nguyen
-            </span>
+        <>
+          <div className="h-[83px] bg-[#9FC2B2] border-b border-black">
+            <div 
+              onClick={scrollToTop}
+              className="absolute left-[7px] top-[22px] w-[120px] h-[39px] border border-black rounded-full flex items-center justify-center cursor-pointer hover:bg-black/5 transition-colors"
+            >
+              <span className="text-black font-bold font-inria text-[14px]">
+                patrick.nguyen
+              </span>
+            </div>
+
+            {/* Menu Toggle Button */}
+            <button 
+              onClick={() => setIsMenuOpen(!isMenuOpen)}
+              className="absolute right-4 top-[22px] w-[39px] h-[39px] flex items-center justify-center"
+            >
+              <img 
+                src={isMenuOpen ? "/menuOpenState.svg" : "/menuClosedState.svg"} 
+                alt="menu" 
+                className="w-6 h-6"
+              />
+            </button>
           </div>
 
-          {/* Menu Toggle Button */}
-          <button 
-            onClick={() => setIsMenuOpen(!isMenuOpen)}
-            className="absolute right-4 top-[22px] w-[39px] h-[39px] flex items-center justify-center"
-          >
-            <img 
-              src={isMenuOpen ? "/menuOpenState.svg" : "/menuClosedState.svg"} 
-              alt="menu" 
-              className="w-6 h-6"
-            />
-          </button>
-
-          {/* Mobile Menu Dropdown - Now slides from right */}
+          {/* Mobile Menu Dropdown */}
           <div 
             className={`
               fixed top-[83px] right-0 w-screen h-[calc(100vh-83px)]
               bg-[#5D8472] 
               transform transition-transform duration-300 ease-in-out
               ${isMenuOpen ? 'translate-x-0' : 'translate-x-full'}
-              z-50
+              z-[998]
             `}
           >
             <div className="flex flex-col py-4">
@@ -189,56 +186,28 @@ const Navbar = () => {
               </span>
             </div>
           </div>
-        </div>
+        </>
       ) : (
+        
         // Desktop Layout
-        <div className="w-full bg-[#9FC2B2] border-b border-black">
-          <div className="mx-auto w-full h-[12.5vh] px-4 relative">
-            <div 
-              onClick={scrollToTop}
-              className="absolute left-[3.44%] top-[50%] -translate-y-1/2 w-[121px] h-[39px] border border-black rounded-full flex items-center justify-center cursor-pointer hover:bg-black/5 transition-colors"
-            >
-              <span className="text-black font-bold font-inria text-[14px]">
-                patrick.nguyen
-              </span>
-            </div>
+        <div className="w-full h-[12.5vh] bg-[#9FC2B2] border-b border-black px-4 relative">
+          <div 
+            onClick={scrollToTop}
+            className="absolute left-[3.44%] top-[50%] -translate-y-1/2 w-[121px] h-[39px] border border-black rounded-full flex items-center justify-center cursor-pointer hover:bg-black/5 transition-colors"
+          >
+            <span className="text-black font-bold font-inria text-[14px]">
+              patrick.nguyen
+            </span>
+          </div>
 
-            {/* Desktop View*/}
-            <div className="absolute left-[54.69%] top-[50%] -translate-y-1/2 hidden lg:block">
-              <span 
-                onClick={scrollToAbout}
-                className="text-black font-bold font-inria text-[14px] whitespace-nowrap cursor-pointer hover:opacity-80"
-              >
-                About Me
-              </span>
-              <span 
-                onClick={scrollToExperience}
-                className="absolute left-[7.8125vw] text-black font-bold font-inria text-[14px] whitespace-nowrap cursor-pointer hover:opacity-80"
-              >
-                Experience
-              </span>
-              <span 
-                onClick={scrollToProjects}
-                className="absolute left-[15.625vw] text-black font-bold font-inria text-[14px] whitespace-nowrap cursor-pointer hover:opacity-80"
-              >
-                Projects
-              </span>
-              <span 
-                onClick={scrollToContact}
-                className="absolute left-[23.4375vw] text-black font-bold font-inria text-[14px] whitespace-nowrap cursor-pointer hover:opacity-80"
-              >
-                Contact
-              </span>
-              <span className="absolute left-[31.25vw] text-black font-bold font-inria text-[14px] whitespace-nowrap">
-                More!
-              </span>
-              <span 
-                onClick={openResume}
-                className="absolute left-[39.0625vw] text-black font-bold font-inria text-[14px] whitespace-nowrap cursor-pointer hover:opacity-80"
-              >
-                Resume
-              </span>
-            </div>
+          {/* Desktop View*/}
+          <div className="absolute right-[3.44%] top-[50%] -translate-y-1/2 flex items-center gap-8">
+            <span onClick={scrollToAbout} className="text-black font-inria text-[14px] cursor-pointer hover:opacity-80">About Me</span>
+            <span onClick={scrollToExperience} className="text-black font-inria text-[14px] cursor-pointer hover:opacity-80">Experience</span>
+            <span onClick={scrollToProjects} className="text-black font-inria text-[14px] cursor-pointer hover:opacity-80">Projects</span>
+            <span onClick={scrollToContact} className="text-black font-inria text-[14px] cursor-pointer hover:opacity-80">Contact</span>
+            <span className="text-black font-inria text-[14px] cursor-pointer hover:opacity-80">More!</span>
+            <span onClick={openResume} className="text-black font-inria text-[14px] cursor-pointer hover:opacity-80">Resume</span>
           </div>
         </div>
       )}
