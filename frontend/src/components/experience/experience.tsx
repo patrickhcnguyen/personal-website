@@ -27,7 +27,7 @@ const Experience = () => {
   return (
     <div ref={experienceRef} id="experience" className={`
       relative
-      ${isMobile ? 'min-h-[900px] px-5' : 'h-[50vh] mb-[45vh]'}
+      ${isMobile ? 'min-h-[900px] px-5' : 'h-[95vh]'}
     `}>
       <div className={`
         ${isMobile ? 'mt-8 mb-12' : 'absolute left-[10vw] top-[-5vh]'}
@@ -46,8 +46,7 @@ const Experience = () => {
       <div className={`
         ${isMobile 
           ? 'absolute left-8 top-[120px] w-[2px] h-[calc(100%-120px)]' 
-          : 'absolute left-[61.48%] top-[-5vh] w-[2px] h-[83.9vh]'
-        }
+          : 'absolute left-[61.48%] top-[5vh] w-[2px] h-[80vh]'}
         mb-[5px] bg-black transition-all duration-1000 
         ${isVisible ? 'opacity-100 scale-y-100' : 'opacity-0 scale-y-0'} 
         origin-top
@@ -217,7 +216,7 @@ const ExperienceItem = ({
   }
 
   return (
-    <div className={`absolute w-full ${isMobile ? 'left-0' : ''} top-[${top}]`}>
+    <div className={`absolute w-full ${isMobile ? 'left-0' : ''}`} style={{ top }}>
       <div className={`
         absolute 
         ${position === 'left' ? 'left-[60.42%]' : 'left-[60.42%]'}
