@@ -27,7 +27,7 @@ const Experience = () => {
   return (
     <div ref={experienceRef} id="experience" className={`
       relative
-      ${isMobile ? 'h-screen overflow-y-auto px-5' : 'h-[50vh] mb-[45vh]'}
+      ${isMobile ? 'min-h-[900px] px-5' : 'h-[50vh] mb-[45vh]'}
     `}>
       <div className={`
         ${isMobile ? 'mt-8 mb-12' : 'absolute left-[10vw] top-[-5vh]'}
@@ -45,7 +45,7 @@ const Experience = () => {
       {/* Timeline */}
       <div className={`
         ${isMobile 
-          ? 'absolute left-8 top-[120px] w-[2px] h-[calc(100%-5px)]' 
+          ? 'absolute left-8 top-[120px] w-[2px] h-[calc(100%-120px)]' 
           : 'absolute left-[61.48%] top-[-5vh] w-[2px] h-[83.9vh]'
         }
         mb-[5px] bg-black transition-all duration-1000 
@@ -67,7 +67,7 @@ const Experience = () => {
           role="Software Engineer"
           description="I collaborate with the researchers of the lab to create solutions based on problems that UC Davis students have."
           icon="/irl.svg"
-          top={isMobile ? '0px' : '5.5vh'}
+          top={isMobile ? '50px' : '5.5vh'}
         />
 
         <ExperienceItem
@@ -79,7 +79,7 @@ const Experience = () => {
           role="Software Engineer"
           description="I'm working on the AggieMenus PWA and mobile app for 38,000 + students."
           icon="/aggieworks.svg"
-          top={isMobile ? '200px' : '25.5vh'}
+          top={isMobile ? '250px' : '25.5vh'}
         />
 
         <ExperienceItem
@@ -91,7 +91,7 @@ const Experience = () => {
           role="Software Engineer Intern"
           description="I worked on a Canvas integrated AI powered study tool that automatically transcribed lecture recordings."
           icon="/icarusdevelopment.svg"
-          top={isMobile ? '400px' : '45.5vh'}
+          top={isMobile ? '450px' : '45.5vh'}
         />
 
         <ExperienceItem
@@ -103,7 +103,7 @@ const Experience = () => {
           role="Technical Associate"
           description="I created a full-stack web app that allowed users to log and track their health information over the course of a week."
           icon="/gdsc.svg"
-          top={isMobile ? '600px' : '65.5vh'}
+          top={isMobile ? '650px' : '65.5vh'}
         />
       </div>
     </div>
