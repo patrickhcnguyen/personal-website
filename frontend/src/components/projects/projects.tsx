@@ -5,6 +5,7 @@ import { useIsMobile } from '../../hooks/useIsMobile';
 interface Project {
   title: string;
   description: string;
+  mobileDescription: string;
   image: string;
   url: string;
   tags: string[];
@@ -21,6 +22,7 @@ const Projects = () => {
     {
       title: "Statify",
       description: "I developed a community based way to view\nyour Spotify Stats, alongside a playlist maker,\nsong recommender, and playlist image\ngenerator.",
+      mobileDescription: "I developed a community based way to view\nyour Spotify Stats, alongside a playlist maker,\nsong recommender, and playlist image\ngenerator.",
       image: "/spotify.svg",
       url: "https://github.com/patrickhcnguyen/Statify",
       tags: ["MongoDB", "Express", "React", "Node", "Tailwind"]
@@ -28,6 +30,7 @@ const Projects = () => {
     {
       title: "Physarum Slime Simulator",
       description: "Inspired by the Physarum Slime Mold, I made a web simulator to \nemulate the behavior of the slime mold.",
+      mobileDescription: "Inspired by the Physarum Slime Mold, I made a web simulator to emulate the behavior of the slime mold.",
       image: "/physarum.svg",
       url: "https://physarum-pathfinder.vercel.app/",
       tags: ["React", "D3.js"]
@@ -35,6 +38,7 @@ const Projects = () => {
     {
       title: "AggieMenus",
       description: "I worked on a team of 5 to develop AggieMenus, a PWA and mobile\napp that centralizes UC Davis dining commons menus to simplify\n browsing and switching between dining hall, locations, dates, and\n meal times.",
+      mobileDescription: "I worked on a team of 5 to develop AggieMenus, a PWA and mobile app that centralizes UC Davis dining commons menus to simplify browsing and switching between dining hall, locations, dates, and meal times.",
       image: "/aggiemenus.svg",
       url: "https://www.aggiemenus.org/menu",
       tags: ["React", "Next.js", "Tailwind", "Supabase"]
@@ -42,6 +46,7 @@ const Projects = () => {
     {
       title: "Library Recommender",
       description: "Using Kaggle’s dataset of over 50,000 Amazon book reviews, I\ndeveloped a book recommender that recommends the user books\nbased on prompts the user inputs in.",
+      mobileDescription: "Using Kaggle’s dataset of over 50,000 Amazon book reviews, I developed a book recommender that recommends the user books based on prompts the user inputs in.",
       image: "/libraryrecommender.svg",
       url: "https://github.com/patrickhcnguyen/Library-Recommender",
       tags: ["Python", "Pandas", "NLTK", "PostgreSQL"]
@@ -216,20 +221,18 @@ const Projects = () => {
           className={`
             ${isMobile ? 'relative mt-4' : 'absolute left-[25vw] top-[5vh]'}
             ${isMobile ? 'w-full' : 'w-[60vw]'}
-            ${isMobile ? 'min-h-[500px]' : 'h-[35vh]'}
+            ${isMobile ? 'h-[450px]' : 'h-[35vh]'}
             bg-[#FAE1C3]
             ${isMobile ? 'rounded-[20px]' : 'rounded-[1.17vw]'}
             transition-all
             duration-1000
             select-none
-            overflow-hidden
+            overflow-visible
             ${isVisible ? 'opacity-100 scale-100' : 'opacity-0 scale-95'}
             touch-pan-y
           `}
         >
-
-          {/* Project Content */}
-          <div className="relative h-full">
+          <div className="relative h-full w-full">
             {/* Project Image */}
             <a 
               href={projects[currentProject].url}
@@ -272,28 +275,31 @@ const Projects = () => {
               whitespace-pre-line
               z-20
             `}>
-              {projects[currentProject].description}
+              {isMobile 
+                ? projects[currentProject].mobileDescription 
+                : projects[currentProject].description
+              }
             </div>
 
             {/* Project Tags */}
             <div className={`
-              absolute
-              ${isMobile ? 'left-4 bottom-4 right-4' : 'left-[3.05vw] bottom-[2.52vh]'}
+              ${isMobile ? 'absolute bottom-4 left-4 right-4' : 'absolute left-[3.05vw] bottom-[2.52vh]'}
               flex
               flex-wrap
-              gap-2
-              ${isMobile ? 'w-auto' : 'w-[33.47vw]'}
+              ${isMobile ? 'gap-1.5' : 'gap-2'}
               z-20
             `}>
               {projects[currentProject].tags.map((tag, index) => (
                 <div
                   key={index}
                   className={`
-                    ${isMobile ? 'px-3 py-1 text-[12px]' : 'px-[0.8vw] py-[0.36vh] text-[0.9375vw]'}
+                    ${isMobile ? 'px-2 py-0.5 text-[10px]' : 'px-[0.8vw] py-[0.36vh] text-[0.9375vw]'}
                     border
                     border-black
                     rounded-full
                     font-inria
+                    whitespace-nowrap
+                    bg-[#FAE1C3]
                   `}
                 >
                   {tag}
