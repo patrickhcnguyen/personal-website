@@ -42,7 +42,7 @@ const Experience = () => {
         </div>
       </div>
       
-      {/* Timeline */}
+      {/* Timeline  */}
       <div className={`
         ${isMobile 
           ? 'absolute left-8 top-[120px] w-[2px] h-[calc(100%-120px)]' 
