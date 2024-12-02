@@ -1,4 +1,5 @@
 import { useState, useEffect, useRef } from 'react';
+import { useIsMobile } from '../../hooks/useIsMobile';
 
 const phrases = [
   "full stack software engineer.",
@@ -7,10 +8,12 @@ const phrases = [
 ];
 
 const AboutMe = () => {
+  const isMobile = useIsMobile();
   const [currentPhraseIndex, setCurrentPhraseIndex] = useState(0);
   const [currentText, setCurrentText] = useState('');
   const [isTyping, setIsTyping] = useState(true);
   const [isVisible, setIsVisible] = useState(false);
+  const [fadeAway, setFadeAway] = useState(false);
   const aboutRef = useRef<HTMLDivElement>(null);
 
   useEffect(() => {
@@ -20,7 +23,7 @@ const AboutMe = () => {
       },
       { 
         threshold: 0.1,
-        rootMargin: '-100px 0px' 
+        rootMargin: '-200px 0px' 
       }
     );
 
@@ -29,6 +32,21 @@ const AboutMe = () => {
     }
 
     return () => observer.disconnect();
+  }, []);
+
+  useEffect(() => {
+    const handleScroll = () => {
+      if (aboutRef.current) {
+        const rect = aboutRef.current.getBoundingClientRect();
+        const fadeThreshold = window.innerHeight / 2;
+        const newFadeAway = rect.top < -fadeThreshold;
+        setFadeAway(newFadeAway);
+      }
+    };
+
+    window.addEventListener('scroll', handleScroll);
+    handleScroll();
+    return () => window.removeEventListener('scroll', handleScroll);
   }, []);
 
   useEffect(() => {
@@ -61,15 +79,30 @@ const AboutMe = () => {
   }, [currentText, isTyping, currentPhraseIndex, isVisible]);
 
   return (
-    <div ref={aboutRef} id="about" className="min-h-[50vh] mb-[10vh] relative">
-      <div className={`ml-[10vw] font-inria font-bold transition-opacity duration-1000 ${isVisible ? 'opacity-100' : 'opacity-0'}`}>
-        <div className="text-[64px] leading-tight">
+    <div ref={aboutRef} id="about" className={`min-h-[50vh] ${isMobile ? 'mb-[5vh]' : 'mb-[10vh]'} relative transition-opacity duration-700 ${fadeAway ? 'opacity-0' : 'opacity-100'}`}>
+      <div className={`
+        ${isMobile ? 'mx-[20px]' : 'ml-[10vw]'} 
+        font-inria 
+        font-bold 
+        transition-opacity 
+        duration-1000 
+        ${isVisible ? 'opacity-100' : 'opacity-0'}
+      `}>
+        <div className={`
+          ${isMobile ? 'text-[36px]' : 'text-[64px]'}
+          leading-tight
+        `}>
           Hi! I'm Patrick,<br />
           I'm a <span className="text-[#407A54]">{currentText}</span>
           <span className="animate-blink">|</span>
         </div>
         
-        <div className="mt-8 text-[20px] font-normal max-w-[32vw] leading-relaxed">
+        <div className={`
+          mt-8 
+          font-normal 
+          ${isMobile ? 'text-[16px] max-w-full' : 'text-[20px] max-w-[32vw]'}
+          leading-relaxed
+        `}>
           I'm a senior at the University of California, Davis, where
           I'm pursuing a Bachelor of Science degree in Computer Science.
           I love using software to create meaningful tools that can
@@ -86,8 +119,6 @@ const AboutMe = () => {
           Lab at UC Davis.
         </div>
       </div>
-      {/* Divider for debugging */}
-      {/* <div className="absolute bottom-0 left-0 w-full h-[2px] bg-red-500" /> */}
     </div>
   );
 };
