@@ -17,9 +17,9 @@ function App() {
       <AboutMe />
       <Experience />
       <Projects />
+      <Contact />
       {!isMobile && (
         <>
-          <Contact />
           <SocialBar />
         </>
       )}
