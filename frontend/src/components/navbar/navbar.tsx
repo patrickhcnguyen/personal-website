@@ -75,7 +75,7 @@ const Navbar = () => {
   };
 
   const openResume = () => {
-    window.open('/PatrickNguyenResume.pdf', '_blank');
+    window.open('/PatrickNguyensResume.pdf', '_blank');
   };
 
   return (
@@ -153,11 +153,11 @@ const Navbar = () => {
               >
                 Contact
               </span>
-              <span 
+              {/* <span 
                 className="px-6 py-3 text-white font-inria text-[18px] cursor-pointer hover:bg-white/10"
               >
                 More!
-              </span>
+              </span> */}
               <span 
                 onClick={() => {
                   openResume();
