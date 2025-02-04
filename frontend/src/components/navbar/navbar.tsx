@@ -189,7 +189,7 @@ const Navbar = () => {
             <span onClick={scrollToExperience} className="text-black font-inria text-[14px] cursor-pointer hover:opacity-80">Experience</span>
             <span onClick={scrollToProjects} className="text-black font-inria text-[14px] cursor-pointer hover:opacity-80">Projects</span>
             <span onClick={scrollToContact} className="text-black font-inria text-[14px] cursor-pointer hover:opacity-80">Contact</span>
-            <span className="text-black font-inria text-[14px] cursor-pointer hover:opacity-80">More!</span>
+            {/* <span className="text-black font-inria text-[14px] cursor-pointer hover:opacity-80">More!</span> */}
             <span onClick={openResume} className="text-black font-inria text-[14px] cursor-pointer hover:opacity-80">Resume</span>
           </div>
         </div>
