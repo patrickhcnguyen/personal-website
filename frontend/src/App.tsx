@@ -6,6 +6,7 @@ import AboutMe from "./components/about/aboutMe";
 import Experience from "./components/experience/experience";
 import Projects from "./components/projects/projects";
 import Contact from "./components/contact/contact";
+import { Analytics } from "@vercel/analytics/react";
 
 function App() {
   const isMobile = useIsMobile();
@@ -23,6 +24,7 @@ function App() {
           <SocialBar />
         </>
       )}
+      <Analytics />
     </div>
   );
 }
