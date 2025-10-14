@@ -239,7 +239,7 @@ const Squares = () => {
             ${redVisible ? 'opacity-100' : 'opacity-0'}
           `}
         >
-          I'm a 4th year student at UC Davis and fullstack SWE passionate about creating user driven products
+          I'm a graduate at UC Davis and fullstack SWE passionate about creating user driven products
         </div>
       </div>
     </div>

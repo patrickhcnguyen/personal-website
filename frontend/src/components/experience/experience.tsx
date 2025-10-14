@@ -27,7 +27,7 @@ const Experience = () => {
   return (
     <div ref={experienceRef} id="experience" className={`
       relative
-      ${isMobile ? 'min-h-[900px] px-5' : 'h-[95vh]'}
+      ${isMobile ? 'min-h-[900px] px-5 mb-16' : 'h-[95vh] mb-[30vh]'}
     `}>
       <div className={`
         ${isMobile ? 'mt-8 mb-12' : 'absolute left-[10vw] top-[-5vh]'}
@@ -46,7 +46,7 @@ const Experience = () => {
       <div className={`
         ${isMobile 
           ? 'absolute left-8 top-[120px] w-[2px] h-[calc(100%-120px)]' 
-          : 'absolute left-[61.48%] top-[5vh] w-[2px] h-[80vh]'}
+          : 'absolute left-[61.48%] top-[5vh] w-[2px] h-[100vh]'}
         mb-[5px] bg-black transition-all duration-1000 
         ${isVisible ? 'opacity-100 scale-y-100' : 'opacity-0 scale-y-0'} 
         origin-top
@@ -57,28 +57,41 @@ const Experience = () => {
         ${isMobile ? 'mt-16 pb-20' : ''}
         relative
       `}>
+
         <ExperienceItem
           isMobile={isMobile}
           isVisible={isVisible}
-          position={isMobile ? 'right' : 'left'}
-          date="Oct 2024 - Present"
-          company="Innovation and Research Lab"
-          role="Software Engineer"
-          description="I collaborate with the researchers of the lab to create solutions based on problems that UC Davis students have."
-          icon="/irl.svg"
+          position={isMobile ? 'left' : 'right'}
+          date="Mar 2025 - Oct 2025"
+          company="eleven8"
+          role="Software Engineer Intern"
+          description="I worked on an internal tool to help automate their sales process and create a more efficient way to manage their sales pipeline."
+          icon="/eleven8.svg"
           top={isMobile ? '50px' : '5.5vh'}
         />
 
         <ExperienceItem
           isMobile={isMobile}
           isVisible={isVisible}
+          position={isMobile ? 'right' : 'left'}
+          date="Oct 2024 - Jun 2025"
+          company="Innovation and Research Lab"
+          role="Software Engineer"
+          description="I collaborate with the researchers of the lab to create solutions based on problems that UC Davis students have."
+          icon="/irl.svg"
+          top={isMobile ? '250px' : '25.5vh'}
+        />
+
+        <ExperienceItem
+          isMobile={isMobile}
+          isVisible={isVisible}
           position={isMobile ? 'right' : 'right'}
-          date="Sept 2024 - Present"
+          date="Sept 2024 - Jun 2025"
           company="AggieWorks"
           role="Software Engineer"
           description="I'm working on the AggieMenus PWA and mobile app for 38,000 + students."
           icon="/aggieworks.svg"
-          top={isMobile ? '250px' : '25.5vh'}
+          top={isMobile ? '450px' : '45.5vh'}
         />
 
         <ExperienceItem
@@ -90,7 +103,7 @@ const Experience = () => {
           role="Software Engineer Intern"
           description="I worked on a Canvas integrated AI powered study tool that automatically transcribed lecture recordings."
           icon="/icarusdevelopment.svg"
-          top={isMobile ? '450px' : '45.5vh'}
+          top={isMobile ? '650px' : '65.5vh'}
         />
 
         <ExperienceItem
@@ -102,7 +115,7 @@ const Experience = () => {
           role="Technical Associate"
           description="I created a full-stack web app that allowed users to log and track their health information over the course of a week."
           icon="/gdsc.svg"
-          top={isMobile ? '650px' : '65.5vh'}
+          top={isMobile ? '850px' : '85.5vh'}
         />
       </div>
     </div>

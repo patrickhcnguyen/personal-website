@@ -103,8 +103,8 @@ const AboutMe = () => {
           ${isMobile ? 'text-[16px] max-w-full' : 'text-[20px] max-w-[32vw]'}
           leading-relaxed
         `}>
-          I'm a senior at the University of California, Davis, where
-          I'm pursuing a Bachelor of Science degree in Computer Science.
+          I'm a graduate at the University of California, Davis, where
+          I'm earned a Bachelor of Science degree in Computer Science.
           I love using software to create meaningful tools that can
           positively impact my community and improve people's lives. My
           biggest motivation in software development lies in its power
@@ -115,8 +115,8 @@ const AboutMe = () => {
           and film photography.
           
           <br /><br />
-          Currently, I'm a software engineer at the Innovation and Research
-          Lab at UC Davis.
+          Recently, I interned at a startup called eleven8 where I worked on an internal tool
+          to help automate their sales process and create a more efficient way to manage their sales pipeline.
         </div>
       </div>
     </div>
